@@ -66,41 +66,26 @@ function runSpeechRecognition() {
       } else if (transcript.indexOf(" better") > -1 && transcript.indexOf(" teacher") > -1) {
         textToSpeak = `Jill Montoro is the best teacher`;
       } else if (transcript == "what day it is") {
-        textToSpeak = `today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
-      } else if (transcript==="what is your name" ) {
+        textToSpeak = `Today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
+      } else if (transcript=="what is your name" ) {
         textToSpeak = "My name is ARA. "
       } else if ((transcript.indexOf("What") > -1 || transcript.indexOf("What") > -1) && (transcript.indexOf("these") > -1 || transcript.indexOf("these"))) {
         textToSpeak = "I'm good and you?"
       }else if (transcript == "open youtube") {
         openYoutube();
       }
-      else if (transcript === "open gmail") {
+      else if (transcript == "open gmail") {
         openGmail();
       }
-      else if(transcript == "what is the time"){
-        let hour = d.getHours();
-        if (hour > 12) hour -= 12;
-        if (hour === 0) hour = 12;
-        const minutes = d.getMinutes();
-        let textMinutes = `y ${minutes} minutes`;
-        if (minutes === 0) { textMinutes = "o'clock"; }
-        if (minutes === 1) { textMinutes = "and 1 minute"; }
-        if (minutes === 15) { textMinutes = "and a quarter"; }
-        if (minutes === 30) { textMinutes = "and a half"; }
-        textToSpeak = `It is ${hour} ${textMinutes}`;
-      }
-      else if (transcript === "open google") {
-        openGoogle();
-      }
-      else if (transcript === "open news") {
-        openNews();
+      else if (transcript == "who are you") {
+        textToSpeak = "I am your favorite virtual assistant-ARA."
       }
     }
     // show the closed captioned and remove after 3 seconds
     texto.textContent = textToSpeak;
     setTimeout(function () {
       texto.textContent = "";
-    }, 3000)
+    }, 7000)
     // read out loud the answer
     let speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
