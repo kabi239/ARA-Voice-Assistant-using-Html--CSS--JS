@@ -60,7 +60,7 @@ function runSpeechRecognition() {
       } else if (transcript.indexOf(" better") > -1 && transcript.indexOf(" teacher") > -1) {
         textToSpeak = `Jill Montoro is the best teacher`;
       } else if (transcript == "what day it is") {
-        textToSpeak = `today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
+        textToSpeak = `Today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
       } else if (transcript=="what is your name" ) {
         textToSpeak = "My name is ARA. "
       } else if ((transcript.indexOf("What") > -1 || transcript.indexOf("What") > -1) && (transcript.indexOf("these") > -1 || transcript.indexOf("these"))) {
@@ -68,15 +68,18 @@ function runSpeechRecognition() {
       }else if (transcript == "open youtube") {
         openYoutube();
       }
-      else if (transcript === "open gmail") {
+      else if (transcript == "open gmail") {
         openGmail();
+      }
+      else if (transcript == "who are you") {
+        textToSpeak = "I am your favorite virtual assistant-ARA."
       }
     }
     // show the closed captioned and remove after 3 seconds
     texto.textContent = textToSpeak;
     setTimeout(function () {
       texto.textContent = "";
-    }, 3000)
+    }, 7000)
     // read out loud the answer
     let speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
