@@ -71,8 +71,17 @@ function runSpeechRecognition() {
       else if (transcript === "open gmail") {
         openGmail();
       }
-      else if(transcript == "can you translate"){
-          
+      else if(transcript == "what is the time"){
+        let hour = d.getHours();
+        if (hour > 12) hour -= 12;
+        if (hour === 0) hour = 12;
+        const minutes = d.getMinutes();
+        let textMinutes = `y ${minutes} minutes`;
+        if (minutes === 0) { textMinutes = "o'clock"; }
+        if (minutes === 1) { textMinutes = "and 1 minute"; }
+        if (minutes === 15) { textMinutes = "and a quarter"; }
+        if (minutes === 30) { textMinutes = "and a half"; }
+        textToSpeak = `time is ${hour} ${textMinutes}`;
       }
     }
     // show the closed captioned and remove after 3 seconds
