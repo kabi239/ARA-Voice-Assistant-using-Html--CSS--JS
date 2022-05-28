@@ -1,16 +1,8 @@
-var apiUrl = "https://api.funtranslations.com/translate/minion.json";
-function my() {
+function openYoutube() {
   window.open("https://www.youtube.com");
 }
-function clickHandler() {       
-  // When someone clicks on translate
-  // button clickHandler will be called
-  var text = inputText.value;
-  var updatedUrl = apiUrl + "?text=" + text;
-  fetch(updatedUrl).then(response =>
-  response.json()).then(json =>
-  outputText.innerText =
-      (json.contents.translated)).catch(errorHandle);
+function openGmail() {
+  window.open("https://mail.google.com/mail/u/0/#inbox");
 }
 function runSpeechRecognition() {
   const frida = document.querySelector("#frida");
@@ -67,14 +59,17 @@ function runSpeechRecognition() {
         textToSpeak = `Tomorrow will be ${d.getDate()} of ${meses[d.getMonth()]}`;
       } else if (transcript.indexOf(" better") > -1 && transcript.indexOf(" teacher") > -1) {
         textToSpeak = `Jill Montoro is the best teacher`;
-      } else if (transcript === "what day it is" || transcript === "hello frida") {
+      } else if (transcript == "what day it is") {
         textToSpeak = `today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
       } else if (transcript==="what is your name" ) {
         textToSpeak = "My name is ARA. "
       } else if ((transcript.indexOf("What") > -1 || transcript.indexOf("What") > -1) && (transcript.indexOf("these") > -1 || transcript.indexOf("these"))) {
         textToSpeak = "I'm good and you?"
-      }else if (transcript === "open youtube" || transcript === "hello ara") {
-        my();
+      }else if (transcript == "open youtube") {
+        openYoutube();
+      }
+      else if (transcript === "open gmail") {
+        openGmail();
       }
       else if(transcript == "can you translate"){
           
