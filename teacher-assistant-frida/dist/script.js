@@ -1,5 +1,8 @@
-function my() {
+function openYoutube() {
   window.open("https://www.youtube.com");
+}
+function openGmail() {
+  window.open("https://mail.google.com/mail/u/0/#inbox");
 }
 function runSpeechRecognition() {
   const frida = document.querySelector("#frida");
@@ -56,14 +59,17 @@ function runSpeechRecognition() {
         textToSpeak = `Tomorrow will be ${d.getDate()} of ${meses[d.getMonth()]}`;
       } else if (transcript.indexOf(" better") > -1 && transcript.indexOf(" teacher") > -1) {
         textToSpeak = `Jill Montoro is the best teacher`;
-      } else if (transcript == "what day it is" || transcript == "hello frida") {
+      } else if (transcript == "what day it is") {
         textToSpeak = `today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
       } else if (transcript=="what is your name" ) {
         textToSpeak = "My name is ARA. "
       } else if ((transcript.indexOf("What") > -1 || transcript.indexOf("What") > -1) && (transcript.indexOf("these") > -1 || transcript.indexOf("these"))) {
         textToSpeak = "I'm good and you?"
-      }else if (transcript == "open youtube" || transcript == "hello ara") {
-        my();
+      }else if (transcript == "open youtube") {
+        openYoutube();
+      }
+      else if (transcript === "open gmail") {
+        openGmail();
       }
     }
     // show the closed captioned and remove after 3 seconds
