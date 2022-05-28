@@ -4,6 +4,12 @@ function openYoutube() {
 function openGmail() {
   window.open("https://mail.google.com/mail/u/0/#inbox");
 }
+function openGoogle() {
+  window.open("https://www.google.com/");
+}
+function openNews() {
+  window.open("https://timesofindia.indiatimes.com/home/headlines");
+}
 function runSpeechRecognition() {
   const frida = document.querySelector("#frida");
   const texto = document.querySelector("#output");
@@ -81,7 +87,13 @@ function runSpeechRecognition() {
         if (minutes === 1) { textMinutes = "and 1 minute"; }
         if (minutes === 15) { textMinutes = "and a quarter"; }
         if (minutes === 30) { textMinutes = "and a half"; }
-        textToSpeak = `time is ${hour} ${textMinutes}`;
+        textToSpeak = `It is ${hour} ${textMinutes}`;
+      }
+      else if (transcript === "open google") {
+        openGoogle();
+      }
+      else if (transcript === "open news") {
+        openNews();
       }
     }
     // show the closed captioned and remove after 3 seconds
