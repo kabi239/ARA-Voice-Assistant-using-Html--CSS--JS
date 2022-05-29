@@ -1,9 +1,11 @@
 function openYoutube() {
   window.open("https://www.youtube.com");
 }
+
 function openGmail() {
   window.open("https://mail.google.com/mail/u/0/#inbox");
 }
+
 function runSpeechRecognition() {
   const frida = document.querySelector("#frida");
   const texto = document.querySelector("#output");
@@ -47,35 +49,43 @@ function runSpeechRecognition() {
         if (hour === 0) hour = 12;
         const minutes = d.getMinutes();
         let textMinutes = `y ${minutes} minutes`;
-        if (minutes === 0) { textMinutes = "o'clock"; }
-        if (minutes === 1) { textMinutes = "and 1 minute"; }
-        if (minutes === 15) { textMinutes = "and a quarter"; }
-        if (minutes === 30) { textMinutes = "and a half"; }
+        if (minutes === 0) {
+          textMinutes = "o'clock";
+        }
+        if (minutes === 1) {
+          textMinutes = "and 1 minute";
+        }
+        if (minutes === 15) {
+          textMinutes = "and a quarter";
+        }
+        if (minutes === 30) {
+          textMinutes = "and a half";
+        }
         textToSpeak = `Are the ${hour} ${textMinutes}`;
       } else if (transcript.indexOf(" date") > -1 && transcript.indexOf(" today") > -1) {
         textToSpeak = `today is ${d.getDate()} th of ${meses[d.getMonth()]}`;
-      } else if (transcript=="what day is tommorow" ) {
+      } else if (transcript == "what day is tommorow") {
         d.setDate(d.getDate() + 1)
         textToSpeak = `Tomorrow will be ${d.getDate()} of ${meses[d.getMonth()]}`;
       } else if (transcript.indexOf(" better") > -1 && transcript.indexOf(" teacher") > -1) {
         textToSpeak = `Jill Montoro is the best teacher`;
       } else if (transcript == "what day it is") {
         textToSpeak = `Today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
-      } else if (transcript=="what is your name" ) {
+      } else if (transcript == "what is your name") {
         textToSpeak = "My name is ARA. "
       } else if ((transcript.indexOf("What") > -1 || transcript.indexOf("What") > -1) && (transcript.indexOf("these") > -1 || transcript.indexOf("these"))) {
         textToSpeak = "I'm good and you?"
-      }else if (transcript == "open youtube") {
+      } else if (transcript == "open youtube") {
         openYoutube();
-      }
-      else if (transcript == "open gmail") {
+      } else if (transcript == "open gmail") {
         openGmail();
-      }
-      else if (transcript == "who are you") {
+      } else if (transcript == "who are you") {
         textToSpeak = "I am your favorite virtual assistant-ARA."
       }
+
+
     }
-    // show the closed captioned and remove after 3 seconds
+    // show the closed captioned and remove after 7 seconds
     texto.textContent = textToSpeak;
     setTimeout(function () {
       texto.textContent = "";
