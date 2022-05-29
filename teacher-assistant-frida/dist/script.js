@@ -10,6 +10,7 @@ function openGoogle() {
 function openNews() {
   window.open("https://timesofindia.indiatimes.com/home/headlines");
 }
+
 function runSpeechRecognition() {
   const frida = document.querySelector("#frida");
   const texto = document.querySelector("#output");
@@ -60,26 +61,33 @@ function runSpeechRecognition() {
         textToSpeak = `Are the ${hour} ${textMinutes}`;
       } else if (transcript.indexOf(" date") > -1 && transcript.indexOf(" today") > -1) {
         textToSpeak = `today is ${d.getDate()} th of ${meses[d.getMonth()]}`;
-      } else if (transcript=="what day is tommorow" ) {
+      } else if (transcript==="what day is tommorow" ) {
         d.setDate(d.getDate() + 1)
         textToSpeak = `Tomorrow will be ${d.getDate()} of ${meses[d.getMonth()]}`;
       } else if (transcript.indexOf(" better") > -1 && transcript.indexOf(" teacher") > -1) {
         textToSpeak = `Jill Montoro is the best teacher`;
-      } else if (transcript == "what day it is") {
+      } else if (transcript === "what day it is") {
         textToSpeak = `Today is ${d.getDate()}th of ${meses[d.getMonth()]}`;
-      } else if (transcript=="what is your name" ) {
+      } else if (transcript==="what is your name" ) {
         textToSpeak = "My name is ARA. "
       } else if ((transcript.indexOf("What") > -1 || transcript.indexOf("What") > -1) && (transcript.indexOf("these") > -1 || transcript.indexOf("these"))) {
         textToSpeak = "I'm good and you?"
-      }else if (transcript == "open youtube") {
+      }else if (transcript === "open youtube") {
         openYoutube();
       }
-      else if (transcript == "open gmail") {
+      else if (transcript === "open gmail") {
         openGmail();
       }
-      else if (transcript == "who are you") {
+      else if (transcript === "who are you") {
         textToSpeak = "I am your favorite virtual assistant-ARA."
       }
+      else if (transcript === "hello"||transcript==="hello ARA") {
+        textToSpeak = "hello."
+      }
+      else if(transcript === "what is 12 plus 18"){
+        textToSpeak ="18"
+      }
+      
     }
     // show the closed captioned and remove after 3 seconds
     texto.textContent = textToSpeak;
