@@ -1,6 +1,7 @@
 function openYoutube() {
   window.open("https://www.youtube.com");
 }
+
 function openGmail() {
   window.open("https://mail.google.com/mail/u/0/#inbox");
 }
@@ -54,10 +55,18 @@ function runSpeechRecognition() {
         if (hour === 0) hour = 12;
         const minutes = d.getMinutes();
         let textMinutes = `y ${minutes} minutes`;
-        if (minutes === 0) { textMinutes = "o'clock"; }
-        if (minutes === 1) { textMinutes = "and 1 minute"; }
-        if (minutes === 15) { textMinutes = "and a quarter"; }
-        if (minutes === 30) { textMinutes = "and a half"; }
+        if (minutes === 0) {
+          textMinutes = "o'clock";
+        }
+        if (minutes === 1) {
+          textMinutes = "and 1 minute";
+        }
+        if (minutes === 15) {
+          textMinutes = "and a quarter";
+        }
+        if (minutes === 30) {
+          textMinutes = "and a half";
+        }
         textToSpeak = `Are the ${hour} ${textMinutes}`;
       } else if (transcript.indexOf(" date") > -1 && transcript.indexOf(" today") > -1) {
         textToSpeak = `today is ${d.getDate()} th of ${meses[d.getMonth()]}`;
@@ -89,7 +98,7 @@ function runSpeechRecognition() {
       }
       
     }
-    // show the closed captioned and remove after 3 seconds
+    // show the closed captioned and remove after 7 seconds
     texto.textContent = textToSpeak;
     setTimeout(function () {
       texto.textContent = "";
