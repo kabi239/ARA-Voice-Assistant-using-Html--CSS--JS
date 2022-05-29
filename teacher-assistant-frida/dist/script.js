@@ -87,14 +87,30 @@ function runSpeechRecognition() {
       else if (transcript === "open gmail") {
         openGmail();
       }
+      else if (transcript === "open News") {
+        openNews();
+      }
       else if (transcript === "who are you") {
         textToSpeak = "I am your favorite virtual assistant-ARA."
       }
-      else if (transcript === "hello"||transcript==="hello ARA") {
-        textToSpeak = "hello."
+      else if (transcript === "hello") {
+        textToSpeak = "hello, Its ARA"
       }
-      else if(transcript === "what is 12 plus 18"){
-        textToSpeak ="18"
+      else if (transcript==="hello ARA") {
+        textToSpeak = "hello, Its ARA"
+      }
+      else if(transcript === "translate hello in hindi"){
+        textToSpeak ="नमस्ते"
+      }
+      else if(transcript === "translate hello in korean"){
+        textToSpeak ="안녕하세요"
+      }
+      else if(transcript === "translate what is your name in hindi"){
+        textToSpeak ="आपका नाम क्या है"
+      }
+      else if(transcript === "translate what is your name in korean"){
+        textToSpeak ="이름이 뭐에요";
+        
       }
       
     }
@@ -104,7 +120,7 @@ function runSpeechRecognition() {
       texto.textContent = "";
     }, 7000)
     // read out loud the answer
-    let speech = new SpeechSynthesisUtterance();
+    speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
     speech.text = textToSpeak;
     speech.onend = function (event) {
@@ -113,8 +129,8 @@ function runSpeechRecognition() {
         frida.classList.remove("speaking");
       }, 600 - (event.elapsedTime % 600));
     }
-    frida.classList.remove("listening");
-    frida.classList.add("speaking");
+    //frida.classList.remove("listening");
+    //frida.classList.add("speaking");
     window.speechSynthesis.speak(speech);
   };
   // start recognition
